@@ -136,11 +136,23 @@ function syncSidebar() {
 
 
 /* Basemap Layers */
+var carto_positron_lite_rainbow = L.tileLayer(
+  "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png",{
+	  subdomains:"abcd",
+	  attribution:'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	  maxZoom: 18
+  });
+
+var carto_label = L.tileLayer(
+	"https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_only_labels/{z}/{x}/{y}.png",{
+	  subdomains:"abcd",
+		maxZoom:18
+	});
 var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
 });
-var usgsImagery = L.layerGroup([L.tileLayer("http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}", {
+/* var usgsImagery = L.layerGroup([L.tileLayer("http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}", {
   maxZoom: 15,
 }), L.tileLayer.wms("http://raster.nationalmap.gov/arcgis/services/Orthoimagery/USGS_EROS_Ortho_SCALE/ImageServer/WMSServer?", {
   minZoom: 16,
@@ -149,7 +161,7 @@ var usgsImagery = L.layerGroup([L.tileLayer("http://basemap.nationalmap.gov/arcg
   format: 'image/jpeg',
   transparent: true,
   attribution: "Aerial Imagery courtesy USGS"
-})]);
+})]); */
 
 
 
@@ -214,7 +226,11 @@ var fst_lt1 = L.geoJson(null, {
     });
 	
 	//untuk di klik nampilin modal
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Nama</th><td>" + feature.properties.nama + "</td></tr>" + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+	  + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+	  + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+	  + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+	  + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.nama);
@@ -897,11 +913,13 @@ if (document.body.clientWidth <= 767) {
 
 var baseLayers = {
   "Street Map": cartoLight,
-  "Aerial Imagery": usgsImagery
+  //"Aerial Imagery": usgsImagery,
+  "Carto Positron": carto_positron_lite_rainbow
 };
 
 var groupedOverlays = {
   "Dekanat": {
+  "Labels": carto_label,
     "Lantai 1": fst_lt1,
     "Lantai 2": fst_lt2,
     "Lantai 3": fst_lt3 
