@@ -6,7 +6,8 @@ var fst_lt1Search=[],fst_lt2Search=[],fst_lt3Search=[]
   ,gb_lt1Search=[],gb_lt2Search=[],gb_lt3Search=[]
   ,kantinSearch=[]
   ,lab_fst_lt1Search=[],lab_fst_lt2Search=[]
-  ,psi_lt1Search=[],psi_lt2Search=[];
+  ,psi_lt1Search=[],psi_lt2Search=[]
+  ,tamanSearch=[];
 
 //untuk menampung array semua layer yang masuk ke POI di pojok kiri
 var sidebarLayers=[];
@@ -207,14 +208,6 @@ function style_ruang(feature) {
 // GEDUNG DEKANAT FASTE
 
 var fst_lt1 = L.geoJson(null, {
-  /*style: function (feature) {
-    return {
-      color: "green",
-      //fill: false,
-      opacity: 1,
-      clickable: true
-    };
-  }, */
   style: style_ruang,
   onEachFeature: function (feature, layer) {
 	//untuk search, push masing-masing fitur ke array kita
@@ -278,7 +271,11 @@ var fst_lt2 = L.geoJson(null, {
 
 	
 	//untuk di klik nampilin modal
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Nama</th><td>" + feature.properties.nama + "</td></tr>" + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+    + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+    + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+    + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+    + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.nama);
@@ -327,8 +324,12 @@ var fst_lt3 = L.geoJson(null, {
 
 	
 	//untuk di klik nampilin modal
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Nama</th><td>" + feature.properties.nama + "</td></tr>" + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" + "<table>";
-      layer.on({
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+    + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+    + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+    + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+    + "<table>";      
+    layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.nama);
           $("#feature-info").html(content);
@@ -360,14 +361,6 @@ $.getJSON("data/fst_lt3.geojson", function (data) {
 // Gedung Baru
 
 var gb_lt1 = L.geoJson(null, {
-    /*style: function (feature) {
-    return {
-      color: "green",
-      //fill: false,
-      opacity: 1,
-      clickable: true
-    };
-  }, */
   style: style_ruang,
   onEachFeature: function (feature, layer) {
     gb_lt1Search.push({
@@ -378,8 +371,12 @@ var gb_lt1 = L.geoJson(null, {
     });
 
 	//untuk di klik nampilin modal
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Nama</th><td>" + feature.properties.nama + "</td></tr>" + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" + "<table>";
-      layer.on({
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+    + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+    + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+    + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+    + "<table>";
+    layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.nama);
           $("#feature-info").html(content);
@@ -428,7 +425,11 @@ var gb_lt2 = L.geoJson(null, {
     });
 
 	//untuk di klik nampilin modal
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Nama</th><td>" + feature.properties.nama + "</td></tr>" + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+    + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+    + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+    + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+    + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.nama);
@@ -461,14 +462,6 @@ $.getJSON("data/gb_lt2.geojson", function (data) {
 
 
 var gb_lt3 = L.geoJson(null, {
-    /*style: function (feature) {
-    return {
-      color: "green",
-      //fill: false,
-      opacity: 1,
-      clickable: true
-    };
-  }, */
   style: style_ruang,
   onEachFeature: function (feature, layer) {
     gb_lt3Search.push({
@@ -478,10 +471,12 @@ var gb_lt3 = L.geoJson(null, {
       bounds: layer.getBounds()
     });
 
-
-
 	//untuk di klik nampilin modal
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Nama</th><td>" + feature.properties.nama + "</td></tr>" + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+    + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+    + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+    + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+    + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.nama);
@@ -489,8 +484,6 @@ var gb_lt3 = L.geoJson(null, {
           $("#featureModal").modal("show");
         }
       });
-
-
 	
 	//untuk POI list
       $("#feature-list tbody").append('<tr class="feature-row" id="' 
@@ -500,10 +493,7 @@ var gb_lt3 = L.geoJson(null, {
 		+ '" bounds="' +layer.getBounds() 
 		+ '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/theater.png"></td><td class="feature-name">' 
 		+ layer.feature.properties.nama 
-		+ '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
-
-
-	  
+		+ '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');	  
   }
 });
 //load geojson kita dengan jQuery
@@ -516,14 +506,6 @@ $.getJSON("data/gb_lt3.geojson", function (data) {
 // kantin
 
 var kantin = L.geoJson(null, {
-    /*style: function (feature) {
-    return {
-      color: "green",
-      //fill: false,
-      opacity: 1,
-      clickable: true
-    };
-  }, */
   style: style_ruang,
   onEachFeature: function (feature, layer) {
     kantinSearch.push({
@@ -535,7 +517,11 @@ var kantin = L.geoJson(null, {
 
 
 	//untuk di klik nampilin modal
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Nama</th><td>" + feature.properties.nama + "</td></tr>" + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+    + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+    + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+    + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+    + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.nama);
@@ -555,9 +541,6 @@ var kantin = L.geoJson(null, {
 		+ layer.feature.properties.nama 
 		+ '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
 
-
-
-	  
   }
 });
 //load geojson kita dengan jQuery
@@ -567,19 +550,9 @@ $.getJSON("data/kantin.geojson", function (data) {
 });
 
 
-
 // lab_fst
-
 var lab_fst_lt1 = L.geoJson(null, {
-  /* style: function (feature) {
-    return {
-      color: "black",
-      //fill: false,
-      opacity: 1,
-      clickable: true
-    };
-  }, */
-  style: style_ruang,
+style: style_ruang,
   onEachFeature: function (feature, layer) {
     lab_fst_lt1Search.push({
       name: layer.feature.properties.nama,
@@ -590,7 +563,11 @@ var lab_fst_lt1 = L.geoJson(null, {
 
 
 	//untuk di klik nampilin modal
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Nama</th><td>" + feature.properties.nama + "</td></tr>" + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+    + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+    + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+    + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+    + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.nama);
@@ -623,14 +600,6 @@ $.getJSON("data/lab_fst_lt1.geojson", function (data) {
 
 
 var lab_fst_lt2 = L.geoJson(null, {
- /* style: function (feature) {
-    return {
-      color: "black",
-      //fill: false,
-      opacity: 1,
-      clickable: true
-    };
-  }, */
   style: style_ruang,
   onEachFeature: function (feature, layer) {
     lab_fst_lt2Search.push({
@@ -640,9 +609,12 @@ var lab_fst_lt2 = L.geoJson(null, {
       bounds: layer.getBounds()
     });
 	
-
 	//untuk di klik nampilin modal
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Nama</th><td>" + feature.properties.nama + "</td></tr>" + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+    + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+    + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+    + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+    + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.nama);
@@ -651,8 +623,6 @@ var lab_fst_lt2 = L.geoJson(null, {
         }
       });	
 
-	  
-	
 	//untuk POI list
       $("#feature-list tbody").append('<tr class="feature-row" id="' 
 		+ L.stamp(layer) 
@@ -673,18 +643,8 @@ $.getJSON("data/lab_fst_lt2.geojson", function (data) {
   lab_fst_lt2.addData(data);
 });
 
-
-
 // PSI
 var psi_lt1 = L.geoJson(null, {
-    /*style: function (feature) {
-    return {
-      color: "green",
-      //fill: false,
-      opacity: 1,
-      clickable: true
-    };
-  }, */
   style: style_ruang,
   onEachFeature: function (feature, layer) {
     psi_lt1Search.push({
@@ -692,12 +652,13 @@ var psi_lt1 = L.geoJson(null, {
       source: "PSI Lantai 1",
       id: L.stamp(layer),
       bounds: layer.getBounds()
-    });
-	
-
-	
+    });	
 	//untuk di klik nampilin modal
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Nama</th><td>" + feature.properties.nama + "</td></tr>" + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+    + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+    + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+    + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+    + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.nama);
@@ -715,8 +676,6 @@ var psi_lt1 = L.geoJson(null, {
 		+ '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/theater.png"></td><td class="feature-name">' 
 		+ layer.feature.properties.nama 
 		+ '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
-
-	
   }
 });
 //load geojson kita dengan jQuery
@@ -727,15 +686,7 @@ $.getJSON("data/psi_lt1.geojson", function (data) {
 
 
 var psi_lt2 = L.geoJson(null, {
-    /*style: function (feature) {
-    return {
-      color: "green",
-      //fill: false,
-      opacity: 1,
-      clickable: true
-    };
-  }, */
-  style: style_ruang,
+style: style_ruang,
   onEachFeature: function (feature, layer) {
     psi_lt2Search.push({
       name: layer.feature.properties.nama,
@@ -746,7 +697,11 @@ var psi_lt2 = L.geoJson(null, {
 
 	
 	//untuk di klik nampilin modal
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Nama</th><td>" + feature.properties.nama + "</td></tr>" + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+    + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+    + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+    + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+    + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.nama);
@@ -775,6 +730,50 @@ $.getJSON("data/psi_lt2.geojson", function (data) {
 });
 
 
+//menambahkan taman
+var taman = L.geoJson(null, {
+  style: style_ruang,
+  onEachFeature: function (feature, layer) {
+  //untuk search, push masing-masing fitur ke array kita
+    tamanSearch.push({
+      name: layer.feature.properties.nama,
+      source: "Taman Cinta",
+      id: L.stamp(layer),
+      bounds: layer.getBounds()
+    });
+  
+  //untuk di klik nampilin modal
+      var content = "<table class='table table-striped table-bordered table-condensed'>" 
+    + "<tr><th>Nama Ruang</th><td>" + feature.properties.nama + "</td></tr>" 
+    + "<tr><th>Luas</th><td>" + feature.properties.area + " m<sup>2</sup></td></tr>" 
+    + "<tr><th>Gambar</th><td>" + feature.properties.pict + "</td></tr>" 
+    + "<table>";
+      layer.on({
+        click: function (e) {
+          $("#feature-title").html(feature.properties.nama);
+          $("#feature-info").html(content);
+          $("#featureModal").modal("show");
+        }
+      });
+  
+  //untuk POI list
+      $("#feature-list tbody").append('<tr class="feature-row" id="' 
+    + L.stamp(layer) 
+    + '" lat="'+feature.geometry.coordinates[0][0][1] 
+    + '" lng="' +feature.geometry.coordinates[0][0][0] 
+    + '" bounds="' +layer.getBounds() 
+    + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/theater.png"></td><td class="feature-name">' 
+    + layer.feature.properties.nama 
+    + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+
+  }
+});
+//load geojson kita dengan jQuery
+$.getJSON("data/taman.geojson", function (data) {
+  //tambahkan ke layer Leaflet yang tadinya masih null
+  taman.addData(data);
+});
+
 
 
 
@@ -792,7 +791,7 @@ map = L.map("map", {
   zoom: 18,
   center: [0.468057,  101.355697], // center di 101.35569777220351, 0.468057021493219 
   // default layers on
-  layers: [fst_lt1, gb_lt1, kantin, lab_fst_lt1, psi_lt1],
+  layers: [fst_lt1, gb_lt1, kantin,lab_fst_lt1, psi_lt1, taman],
   zoomControl: false,
   // we have our own attributionControl
   attributionControl: false
@@ -1094,6 +1093,17 @@ $(document).one("ajaxStop", function () {
     limit: 10
   });
   lab_fst_lt1BH.initialize();
+
+  var tamanBH = new Bloodhound({
+    name: "Taman Cinta",
+    datumTokenizer: function (d) {
+      return Bloodhound.tokenizers.whitespace(d.name);
+    },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    local: tamanSearch,
+    limit: 10
+  });
+  tamanBH.initialize();
 	
   /*
   var geonamesBH = new Bloodhound({
@@ -1202,7 +1212,14 @@ $(document).one("ajaxStop", function () {
     source: lab_fst_lt1BH.ttAdapter(),
     templates: {
       header: "<h4 class='typeahead-header'>Lab Lantai 1</h4>"
-    }  
+    }
+  }, {
+    name: "taman",
+    displayKey: "name",
+    source: tamanBH.ttAdapter(),
+    templates: {
+      header: "<h4 class='typeahead-header'>Taman</h4>"
+    }    
   }).on("typeahead:selected", function (obj, datum) {
     //if (datum.source === "Fst") {
       map.fitBounds(datum.bounds);
