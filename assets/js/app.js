@@ -185,9 +185,12 @@ var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={
     subdomains:['mt0','mt1','mt2','mt3']
 });
 
-
-
-
+//dron DJI 
+//https://sifsuska.github.io/dji20170704/17/17-102438-65365.jpg
+var dron_dji20170704 = L.tileLayer('https://sifsuska.github.io/dji20170704/{z}/{z}-{x}-{y}',{
+    minZoom: 17,
+    maxZoom: 22
+});
 
 
 
@@ -937,6 +940,9 @@ var baseLayers = {
 				"Google Hybrid":googleHybrid,
 				"Google Satellite":googleSat,
 				"Google Terrain":googleTerrain,  
+  
+  
+  "Dron 20170704": dron_dji20170704,
   
   //"Aerial Imagery": usgsImagery,
   "Carto Positron": carto_positron_lite_rainbow
