@@ -187,7 +187,7 @@ var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={
 
 //dron DJI 
 //https://sifsuska.github.io/dji20170704/17/17-102438-65365.jpg
-var dron_dji20170704 = L.tileLayer('https://sifsuska.github.io/dji20170704/{z}/{z}-{x}-{y}',{
+var dron_dji20170704 = L.tileLayer('https://sifsuska.github.io/dji20170704/{z}/{z}-{x}-{y}.jpg',{
     minZoom: 17,
     maxZoom: 22
 });
