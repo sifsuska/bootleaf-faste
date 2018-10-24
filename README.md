@@ -8,4 +8,4 @@ repo ini merupakan fork dari @bmcbride/bootleaf yang diubah agar sesuai dengan p
 View live demo [here](https://sifsuska.github.io/bootleaf-faste)
 
 # Screenshoot
-![screenshot](https://raw.githubusercontent.com/ibnudana02/bootleaf-faste/master/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/ibnudana02/bootleaf-faste/master/screenshot.jpg)
